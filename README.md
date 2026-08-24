@@ -1,6 +1,9 @@
 # Local Test Pulse 0.1.0
 
-Local Test Pulse is a private, local release candidate for an Omarchy Quattro bar widget. It **only reads** one explicitly configured local test report and summarizes JUnit XML, `pytest-json-report` JSON, or Playwright JSON reporter output. It never runs tests.
+[![CI](https://github.com/godhiraj-code/omarchy-local-test-pulse/actions/workflows/ci.yml/badge.svg)](https://github.com/godhiraj-code/omarchy-local-test-pulse/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Local Test Pulse is a private-by-design Omarchy Quattro bar widget. It **only reads** one explicitly configured local test report and summarizes JUnit XML, `pytest-json-report` JSON, or Playwright JSON reporter output. It never runs tests.
 
 ## Status model
 
@@ -25,7 +28,13 @@ A flaky hint is strictly within one report. JUnit duplicate identities must cont
 
 Auto-detection is conservative. Select a format explicitly if needed; selecting the wrong format produces an error rather than a pass.
 
-## Private local installation
+## Installation
+
+```sh
+omarchy plugin add https://github.com/godhiraj-code/omarchy-local-test-pulse --enable --yes
+```
+
+## Local development installation
 
 On the Omarchy Linux machine, from this checkout:
 
@@ -59,4 +68,4 @@ See [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md). Notably, the plugin has no net
 
 Pytest records must contain lifecycle stages consistent with their declared outcome; top-level pass claims alone are rejected. Playwright skipped tests must contain one skipped attempt and no retry history. Changing widget settings immediately invalidates the old result, and an in-flight result from the previous configuration is discarded.
 
-This checkout has not been claimed as real-Quickshell validated. Before any publication, run the official `omarchy-plugin-validate` and live Quickshell checks against the exact Git archive on Omarchy Linux. Publishing, pushing, tagging, catalog submission, or announcement is outside this private RC.
+The 0.1.0 release candidate was validated with the official Omarchy plugin validator and exercised from its exact Git archive under Quickshell 0.3.0 on a physical two-monitor Omarchy 4/Quattro desktop. Live checks covered pass, fail, flaky, stale, error and unconfigured states; hostile plain-text rendering; periodic refresh; and configuration-generation invalidation.
