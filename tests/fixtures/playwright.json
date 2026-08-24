@@ -1,0 +1,50 @@
+{
+  "config": {"workers": 1},
+  "suites": [{
+    "title": "math",
+    "suites": [],
+    "specs": [
+      {
+        "id": "spec-adds",
+        "title": "adds",
+        "ok": true,
+        "tests": [{
+          "projectId": "chromium",
+          "projectName": "chromium",
+          "expectedStatus": "passed",
+          "status": "flaky",
+          "results": [
+            {"retry": 0, "status": "failed", "duration": 100, "error": {"message": "first attempt"}},
+            {"retry": 1, "status": "passed", "duration": 80}
+          ]
+        }]
+      },
+      {
+        "id": "spec-subtracts",
+        "title": "subtracts",
+        "ok": true,
+        "tests": [{
+          "projectId": "chromium",
+          "projectName": "chromium",
+          "expectedStatus": "passed",
+          "status": "expected",
+          "results": [{"retry": 0, "status": "passed", "duration": 50}]
+        }]
+      },
+      {
+        "id": "spec-divides",
+        "title": "divides",
+        "ok": false,
+        "tests": [{
+          "projectId": "chromium",
+          "projectName": "chromium",
+          "expectedStatus": "passed",
+          "status": "unexpected",
+          "results": [{"retry": 0, "status": "failed", "duration": 40, "error": {"message": "division failed"}}]
+        }]
+      }
+    ]
+  }],
+  "errors": [],
+  "stats": {"startTime": "2026-08-24T00:00:00.000Z", "duration": 270, "expected": 1, "unexpected": 1, "flaky": 1, "skipped": 0}
+}

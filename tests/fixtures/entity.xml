@@ -1,0 +1,2 @@
+<!DOCTYPE testsuite [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
+<testsuite tests="1"><testcase name="bad"><failure message="&xxe;" /></testcase></testsuite>

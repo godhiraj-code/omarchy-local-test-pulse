@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify release candidate
+        run: |
+          python -W error::ResourceWarning -m unittest discover -s tests -p 'test_*.py' -v
+          node --check StatusModel.js
+          node tests/status-model-test.mjs
+          bash -n scripts/install-local.sh scripts/remove-local.sh
+          python -m json.tool manifest.json >/dev/null
+          python -m compileall -q scripts tests
+          git diff --check
+      - name: Verify executable and LF archive contract
+        run: |
+          test -x scripts/report_status.py
+          test -x scripts/install-local.sh
+          test -x scripts/remove-local.sh
+          ! grep -Il $'\r' scripts/*.sh

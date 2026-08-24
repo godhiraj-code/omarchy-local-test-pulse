@@ -1,0 +1,5 @@
+<testsuite name="unit" tests="3" failures="1" errors="1" skipped="0" time="0.5">
+  <testcase classname="pkg.TestMath" name="test_add" time="0.1" />
+  <testcase classname="pkg.TestMath" name="test_subtract" time="0.2"><failure message="expected 4 but got 5">trace secret body must not be preferred</failure></testcase>
+  <testcase classname="pkg.TestMath" name="test_crash" time="0.2"><error message="worker crashed" /></testcase>
+</testsuite>

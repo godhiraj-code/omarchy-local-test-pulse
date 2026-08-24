@@ -1,0 +1,63 @@
+{
+  "created": 0,
+  "duration": 0.1092519760131836,
+  "exitcode": 1,
+  "root": "/sanitized/pytest-json-producer",
+  "environment": {
+    "fixtureSource": "pytest-json-report 1.5.0 producer output; volatile paths and tracebacks sanitized"
+  },
+  "summary": {
+    "error": 2,
+    "total": 2,
+    "collected": 2
+  },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {"nodeid": "test_combined.py", "type": "Module"}
+      ]
+    },
+    {
+      "nodeid": "test_combined.py",
+      "outcome": "passed",
+      "result": [
+        {"nodeid": "test_combined.py::test_setup_and_teardown_failure", "type": "Function", "lineno": 19},
+        {"nodeid": "test_combined.py::test_setup_skip_and_teardown_failure", "type": "Function", "lineno": 23}
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "test_combined.py::test_setup_and_teardown_failure",
+      "lineno": 19,
+      "outcome": "error",
+      "setup": {
+        "outcome": "failed",
+        "duration": 0.00028149993158876896,
+        "crash": {"message": "RuntimeError: setup failed", "path": "test_combined.py", "lineno": 12}
+      },
+      "teardown": {
+        "outcome": "failed",
+        "duration": 0.00043969997204840183,
+        "crash": {"message": "RuntimeError: teardown failed", "path": "test_combined.py", "lineno": 7}
+      }
+    },
+    {
+      "nodeid": "test_combined.py::test_setup_skip_and_teardown_failure",
+      "lineno": 23,
+      "outcome": "error",
+      "setup": {
+        "outcome": "skipped",
+        "duration": 0.0003218000056222081,
+        "longrepr": "Skipped: setup skipped"
+      },
+      "teardown": {
+        "outcome": "failed",
+        "duration": 0.00015490001533180475,
+        "crash": {"message": "RuntimeError: teardown failed", "path": "test_combined.py", "lineno": 7}
+      }
+    }
+  ]
+}

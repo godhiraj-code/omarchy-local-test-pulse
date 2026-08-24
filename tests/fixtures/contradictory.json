@@ -1,0 +1,1 @@
+{"created": 1720000000, "duration": 0.1, "exitcode": 0, "summary": {"passed": 2, "failed": 0, "total": 2}, "tests": [{"nodeid": "x::test_one", "outcome": "passed", "duration": 0.1, "setup": {"outcome": "passed", "duration": 0.01}, "call": {"outcome": "passed", "duration": 0.08}, "teardown": {"outcome": "passed", "duration": 0.01}}]}
