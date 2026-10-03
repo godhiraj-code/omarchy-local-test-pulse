@@ -25,6 +25,12 @@ const staleFailure = {...base(), state:"stale"};
 assert.equal(model.validate(staleFailure).state, "stale");
 assert.equal(model.colorKey(staleFailure), "amber");
 rejects(x => x.tests = 3, "totals");
+for (const invalid of ["toString", "constructor", "__proto__", ["pytest"], ["passed"]]) {
+  rejects(x => x.state = invalid, "state");
+  rejects(x => x.framework = invalid, "state");
+  const forgedPass = {...passed, framework: invalid};
+  assert.equal(model.colorKey(model.validate(forgedPass)), "amber");
+}
 rejects(x => x.state = "passed", "semantics");
 rejects(x => x.state = "empty", "semantics");
 rejects(x => x.durationMs = -1, "ranges");
