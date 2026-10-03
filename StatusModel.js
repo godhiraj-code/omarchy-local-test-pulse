@@ -30,7 +30,8 @@ function validate(input) {
     try {
         if (!input || typeof input !== "object" || Array.isArray(input) || input.version !== 1)
             return errorState("schema", "Invalid adapter schema");
-        if (!STATES[input.state] || !FRAMEWORKS[input.framework])
+        if (typeof input.state !== "string" || STATES[input.state] !== true ||
+            typeof input.framework !== "string" || FRAMEWORKS[input.framework] !== true)
             return errorState("state", "Invalid status or framework");
         var counts = [input.tests, input.passed, input.failed, input.errors, input.skipped, input.flakyTests];
         for (var i = 0; i < counts.length; ++i)
